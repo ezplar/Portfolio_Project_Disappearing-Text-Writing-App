@@ -1,6 +1,6 @@
 from tkinter import *
 
-#Create window - screen
+# Create window - screen
 window = Tk()
 window.title("Disappearing Text Writing App")
 window.configure(padx=10, pady=10, background='gray')
@@ -10,7 +10,9 @@ key_counter = 0
 seconds = 5
 fade = 1.0
 
-#Keypress event function, gets every key press to start timer and fade timer, also resets timer seconds and fade opacity.
+
+# Keypress event function, gets every key press to start timer and fade timer, also resets timer seconds and fade
+# opacity.
 def key_pressed(event):
     key = event.char
     # print(key)
@@ -23,7 +25,8 @@ def key_pressed(event):
         fade_timer()
         time_destoyer()
 
-#Fade timer, parallel with Timer, fade opacity is decreased every 1 second.
+
+# Fade timer, parallel with Timer, fade opacity is decreased every 1 second.
 def fade_timer():
     global clock_text
     clock_text = seconds
@@ -36,6 +39,7 @@ def fade_timer():
     if fade <= 0:
         window.destroy()
 
+
 def fade_out_time():
     global fade
     window.attributes("-alpha", fade)
@@ -43,7 +47,8 @@ def fade_out_time():
     fade_timer()
     print(f"Opacity: {fade}")
 
-#Main timer, countdown of Timer setted to 5, decreases seconds every 1000 milliseconds.
+
+# Main timer, countdown of Timer setted to 5, decreases seconds every 1000 milliseconds.
 def time_destoyer():
     global clock_text
     clock_text = seconds
@@ -56,6 +61,7 @@ def time_destoyer():
     if seconds <= 0:
         window.after_cancel(ws)
 
+
 def dec_time():
     global seconds
     seconds -= 1
@@ -66,33 +72,19 @@ def dec_time():
 time_left_label = Label(text="Fade Time left: ", background='gray')
 time_left_label.pack_forget()
 
-canvas = Canvas(window,height=17,width=20)
+canvas = Canvas(window, height=17, width=20)
 canvas.pack_forget()
 
-clock = canvas.create_text(11,11,font=('', 10), fill="black")
+clock = canvas.create_text(11, 11, font=('', 10), fill="black")
 
-#Text/input box for words and sentences.
-type_box = Text(height=10, width=60, font=("Arial",20,),bg='light gray')
+# Text/input box for words and sentences.
+type_box = Text(height=10, width=60, font=("Arial", 20,), bg='light gray')
 type_box.pack()
 type_box.focus_set()
 
-sample_sentence = "Please continue and do not stop typing for this application. Be productive, use your imagination or write down what are you thinking right now and don't stop!"
-type_box.insert(END,sample_sentence)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+sample_sentence = ("Please continue and do not stop typing for this application. Be productive, use your imagination "
+                   "or write down what are you thinking right now and don't stop!")
+type_box.insert(END, sample_sentence)
 
 window.bind("<KeyPress>", key_pressed)
 
