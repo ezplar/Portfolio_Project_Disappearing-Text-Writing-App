@@ -10,6 +10,7 @@ key_counter = 0
 seconds = 5
 fade = 1.0
 
+#Keypress event function, gets every key press to start timer and fade timer, also resets timer seconds and fade opacity.
 def key_pressed(event):
     key = event.char
     # print(key)
@@ -22,6 +23,7 @@ def key_pressed(event):
         fade_timer()
         time_destoyer()
 
+#Fade timer, parallel with Timer, fade opacity is decreased every 1 second.
 def fade_timer():
     global clock_text
     clock_text = seconds
@@ -41,6 +43,7 @@ def fade_out_time():
     fade_timer()
     print(f"Opacity: {fade}")
 
+#Main timer, countdown of Timer setted to 5, decreases seconds every 1000 milliseconds.
 def time_destoyer():
     global clock_text
     clock_text = seconds
